@@ -4,71 +4,81 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.TreeMap;
 
-public class UDPClient {
+public class UDPClient  implements Observer {
 
-    public static void main(String args[]) {
+    Socket socket;
+    String str;
+    BufferedReader userInput;
+    BufferedReader serverResponse;
+    PrintWriter outputStream;
+    ManageInput manageInput;
+    ManageOutput manageOutput;
+    String host;
+    String port;
+    Boolean connected = Boolean.TRUE;
+    Thread inputThread;
+    Thread outputThread;
 
-        Socket socket=null;
-        String str;
-        BufferedReader userInput = null;
-        BufferedReader serverResponse = null;
-        PrintWriter outputStream = null;
+    public UDPClient() {
 
+    }
+
+    public void run(){
         try {
-            //Seteo el host y el puerto del servidor
-            socket = new Socket("localhost", 3000);
 
             userInput = new BufferedReader(new InputStreamReader(System.in));
+
+            System.out.println("Ingrese la direccion del host");
+            host = userInput.readLine();
+            System.out.println("Ingrese el puerto");
+            port = userInput.readLine();
+            socket = new Socket(host, Integer.valueOf(port));
+
 
             serverResponse = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             outputStream = new PrintWriter(socket.getOutputStream());
 
-            System.out.println("Mi direccion ip : "+socket.getLocalAddress());
-            System.out.println("Enviar al servidor: (Enviar x para terminar la conexion):");
-            String response;
+            manageInput = new ManageInput(socket,userInput,serverResponse,outputStream,this);
 
-            try{
-                str = userInput.readLine();
-                while(str.compareTo("X")!=0){
-                    outputStream.println(str );
-                    outputStream.flush();
-                    response = serverResponse.readLine();
-                    System.out.println("Respuesta del servidor : "+response);
-                    str =userInput.readLine();
-                }
+            manageOutput = new ManageOutput(socket,userInput,serverResponse,outputStream,this);
 
-            }
-            catch(IOException e){
-                e.printStackTrace();
-                System.out.println("Error al leer el socket");
-             }
-            finally{
-                try {
-                    //cerramos toodo//
-                    serverResponse.close();
-                    outputStream.close();
-                    userInput.close();
-                    socket.close();
-                    System.out.println("Conexion cerrada");
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                    System.err.print("Se cago todo justo cuando estabas terminando");
-                }
-            }
-        } catch (ConnectException e){
-            System.err.println("Imposible establecer conexion, el servidor no esta funcionando");
+            inputThread = new Thread(manageInput);
+            outputThread = new Thread(manageOutput);
+            inputThread.start();
+            outputThread.start();
+
         } catch (UnknownHostException e) {
-            System.err.println("Hostname invalido");
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        inputThread.interrupt();
+        outputThread.interrupt();
+
+        try {
+            //cerramos toodo//
+            serverResponse.close();
+            outputStream.close();
+            userInput.close();
+            socket.close();
+            System.out.println("Conexion cerrada");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.err.print("Se cago todo justo cuando estabas terminando");
+        }
     }
 }

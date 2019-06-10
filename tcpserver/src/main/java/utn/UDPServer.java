@@ -1,43 +1,51 @@
 package utn;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.concurrent.TimeUnit;
+import java.util.Observable;
+
+public class UDPServer extends Observable{
+
+    ServerSocket ss;
+    BufferedReader userInput;
+    String str;
+    ThreadAcceptCon acceptCon;
 
 
-public class UDPServer {
-    public static void main(String args[]){
-
-
-        Socket s;
-        ServerSocket ss = null;
+    public void startServer() {
         try{
+            userInput = new BufferedReader(new InputStreamReader(System.in));
             ss = new ServerSocket(3000);
             System.out.println("Servidor escuchando");
+            acceptCon = new ThreadAcceptCon(this,ss);
+            acceptCon.start();
 
-            while(true){
-
-                try{
-                s= ss.accept();
-                System.out.println("Conectado con "+s.getLocalAddress().getHostAddress());
-                ServerThread st=new ServerThread(s);
-                st.setName("Conexion con"+ s.getLocalAddress());
-                st.start();
-                }
-
-                catch(Exception e){
-                    e.printStackTrace();
-                    System.out.println("Se hizo mierda la conexion");
-
-                }
+            System.out.println("Enviar a todos los clientes: (Enviar X para terminar la conexion):");
+            str = userInput.readLine();
+            while(str.compareTo("X")!=0){
+                setChanged();
+                notifyObservers(str);
+                str = userInput.readLine();
             }
-
+            setChanged();
+            notifyObservers(str);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void closeServer() {
+        try {
+            ss.close();
+            acceptCon.close();
+            acceptCon.interrupt();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
