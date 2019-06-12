@@ -7,68 +7,78 @@ import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Observable;
+import java.util.Observer;
 
-public class UDPClient {
+public class UDPClient  implements Observer {
 
-    public static void main(String args[]) {
+    Socket socket;
+    String str;
+    BufferedReader userInput;
+    BufferedReader serverResponse;
+    PrintWriter outputStream;
+    ManageInput manageInput;
+    ManageOutput manageOutput;
+    String host;
+    String port;
+    Thread inputThread;
+    Thread outputThread;
 
-        Socket socket=null;
-        String str;
-        BufferedReader userInput = null;
-        BufferedReader serverResponse = null;
-        PrintWriter outputStream = null;
+    public UDPClient() {
 
+    }
+
+    public void run(){
         try {
-            //Seteo el host y el puerto del servidor
-            socket = new Socket("localhost", 3000);
 
             userInput = new BufferedReader(new InputStreamReader(System.in));
 
-            serverResponse = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println("Ingrese la direccion del host o X para salir");
+            host = userInput.readLine();
+            if(!host.equals("X")){
+                System.out.println("Ingrese el puerto");
+                port = userInput.readLine();
+                socket = new Socket(host, Integer.valueOf(port));
 
-            outputStream = new PrintWriter(socket.getOutputStream());
 
-            System.out.println("Mi direccion ip : "+socket.getLocalAddress());
-            System.out.println("Enviar al servidor: (Enviar x para terminar la conexion):");
-            String response;
+                serverResponse = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            try{
-                str = userInput.readLine();
-                while(str.compareTo("X")!=0){
-                    outputStream.println(str );
-                    outputStream.flush();
-                    response = serverResponse.readLine();
-                    System.out.println("Respuesta del servidor : "+response);
-                    str =userInput.readLine();
-                }
+                outputStream = new PrintWriter(socket.getOutputStream());
 
+                manageInput = new ManageInput(socket, userInput, serverResponse, outputStream, this);
+
+                manageOutput = new ManageOutput(socket, userInput, serverResponse, outputStream, this);
+
+                inputThread = new Thread(manageInput);
+                outputThread = new Thread(manageOutput);
+                inputThread.start();
+                outputThread.start();
             }
-            catch(IOException e){
-                e.printStackTrace();
-                System.out.println("Error al leer el socket");
-             }
-            finally{
-                try {
-                    //cerramos toodo//
-                    serverResponse.close();
-                    outputStream.close();
-                    userInput.close();
-                    socket.close();
-                    System.out.println("Conexion cerrada");
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                    System.err.print("Se cago todo justo cuando estabas terminando");
-                }
-            }
-        } catch (ConnectException e){
-            System.err.println("Imposible establecer conexion, el servidor no esta funcionando");
+
         } catch (UnknownHostException e) {
-            System.err.println("Hostname invalido");
+            e.printStackTrace();
+        }
+        catch(ConnectException e){
+            System.err.println("El servidor no esta funcionando");
+            System.out.println("Intente de nuevo");
+            this.run();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        try {
+            socket.close();
+            System.out.println("Conexion cerrada");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.err.print("Se cago todo justo cuando estabas terminando");
+        }
     }
 }

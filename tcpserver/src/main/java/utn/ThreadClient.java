@@ -5,25 +5,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Observable;
+import java.util.Observer;
 
-class ServerThread extends Thread{
+class ThreadClient extends Thread implements Observer {
 
     private String str;
     private BufferedReader inputStream;
     private PrintWriter outputStream;
     private Socket s;
-    private Boolean connected;
 
 
-    public ServerThread(Socket s){
+    public ThreadClient(Socket s){
+        super();
         this.s=s;
-        this.str = null;
+        this.str = "";
         this.inputStream = null;
         this.outputStream = null;
-        this.connected = Boolean.TRUE;
-    }
-
-    public void run() {
         try{
             inputStream = new BufferedReader(new InputStreamReader(s.getInputStream()));
             outputStream =new PrintWriter(s.getOutputStream());
@@ -31,46 +29,64 @@ class ServerThread extends Thread{
         }catch(IOException e){
             System.err.println("I/O error en el thread " + Thread.currentThread().getName());
         }
+    }
+
+    public void run() {
 
         try {
-            str= inputStream.readLine();
+            str = inputStream.readLine();
             while(str.compareTo("X")!=0){
 
                 outputStream.println(str);
                 outputStream.flush();
                 System.out.println("Respuesta al cliente desde (thread "+this.getId()+") a (" + s.getLocalAddress() +") :  "+str);
-                str= inputStream.readLine();
+                str = inputStream.readLine();
+
             }
         } catch (IOException e) {
 
-            System.out.println("El cliente "+this.getId()+" se hizo mierda abruptamente");
+            System.err.println("El cliente "+this.getId()+" se hizo mierda");
         }
         catch(NullPointerException e){
-            System.out.println("El cliente "+this.getId()+" se cerro");
+            System.out.println("El cliente "+this.getId()+" cerro la conexion");
         }
 
         finally{
             try{
-                System.out.println("Cerrando conexion");
+                String str = " ip: " + s.getLocalAddress() + " id: " + this.getId();
+                System.out.println("Cerrando conexion con" + str);
                 if (inputStream !=null){
                     inputStream.close();
-                    System.out.println("Socket Input Stream Cerrado");
                 }
 
                 if(outputStream !=null){
                     outputStream.close();
-                    System.out.println("Socket Out Stream Cerrado");
                 }
                 if (s!=null){
+
                     s.close();
-                    System.out.println("Socket Cerrado");
+                    System.out.println("Conexion cerrada con " + str);
+
                 }
 
             }
             catch(IOException ie){
-                System.out.println("Error cerrando Socket");
+                System.err.println("Error cerrando Socket");
             }
         }
     }
 
+    @Override
+    public void update(Observable observable, Object o) {
+        if(o instanceof String) {
+            String msg = (String) o;
+            outputStream.println(msg);
+            outputStream.flush();
+            if(!msg.equals("X"))
+                System.out.println("Mensaje a todos los clientes -> (" + s.getLocalAddress() + ") :  " + msg);
+            else
+                System.out.println("Cerrando conexion");
+        }
+
+        }
 }
