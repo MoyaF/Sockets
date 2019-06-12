@@ -45,7 +45,7 @@ class ThreadClient extends Thread implements Observer {
             }
         } catch (IOException e) {
 
-            System.out.println("El cliente "+this.getId()+" se hizo mierda abruptamente");
+            System.err.println("El cliente "+this.getId()+" se hizo mierda");
         }
         catch(NullPointerException e){
             System.out.println("El cliente "+this.getId()+" cerro la conexion");
@@ -53,27 +53,25 @@ class ThreadClient extends Thread implements Observer {
 
         finally{
             try{
-                System.out.println("Cerrando conexion con" + s.getLocalAddress());
+                String str = " ip: " + s.getLocalAddress() + " id: " + this.getId();
+                System.out.println("Cerrando conexion con" + str);
                 if (inputStream !=null){
-                    System.out.println("Cerrando Input Stream...");
                     inputStream.close();
-                    System.out.println("Input Stream Cerrado");
                 }
 
                 if(outputStream !=null){
-                    System.out.println("Cerrando Output Stream...");
                     outputStream.close();
-                    System.out.println("Socket Out Stream Cerrado");
                 }
                 if (s!=null){
-                    System.out.println("Cerrando Socket...");
+
                     s.close();
-                    System.out.println("Socket Cerrado");
+                    System.out.println("Conexion cerrada con " + str);
+
                 }
 
             }
             catch(IOException ie){
-                System.out.println("Error cerrando Socket");
+                System.err.println("Error cerrando Socket");
             }
         }
     }

@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.TreeMap;
 
 public class UDPClient  implements Observer {
 
@@ -21,7 +21,6 @@ public class UDPClient  implements Observer {
     ManageOutput manageOutput;
     String host;
     String port;
-    Boolean connected = Boolean.TRUE;
     Thread inputThread;
     Thread outputThread;
 
@@ -34,44 +33,45 @@ public class UDPClient  implements Observer {
 
             userInput = new BufferedReader(new InputStreamReader(System.in));
 
-            System.out.println("Ingrese la direccion del host");
+            System.out.println("Ingrese la direccion del host o X para salir");
             host = userInput.readLine();
-            System.out.println("Ingrese el puerto");
-            port = userInput.readLine();
-            socket = new Socket(host, Integer.valueOf(port));
+            if(!host.equals("X")){
+                System.out.println("Ingrese el puerto");
+                port = userInput.readLine();
+                socket = new Socket(host, Integer.valueOf(port));
 
 
-            serverResponse = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                serverResponse = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            outputStream = new PrintWriter(socket.getOutputStream());
+                outputStream = new PrintWriter(socket.getOutputStream());
 
-            manageInput = new ManageInput(socket,userInput,serverResponse,outputStream,this);
+                manageInput = new ManageInput(socket, userInput, serverResponse, outputStream, this);
 
-            manageOutput = new ManageOutput(socket,userInput,serverResponse,outputStream,this);
+                manageOutput = new ManageOutput(socket, userInput, serverResponse, outputStream, this);
 
-            inputThread = new Thread(manageInput);
-            outputThread = new Thread(manageOutput);
-            inputThread.start();
-            outputThread.start();
+                inputThread = new Thread(manageInput);
+                outputThread = new Thread(manageOutput);
+                inputThread.start();
+                outputThread.start();
+            }
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
+        }
+        catch(ConnectException e){
+            System.err.println("El servidor no esta funcionando");
+            System.out.println("Intente de nuevo");
+            this.run();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 
     @Override
     public void update(Observable observable, Object o) {
-        inputThread.interrupt();
-        outputThread.interrupt();
-
         try {
-            //cerramos toodo//
-            serverResponse.close();
-            outputStream.close();
-            userInput.close();
             socket.close();
             System.out.println("Conexion cerrada");
         }

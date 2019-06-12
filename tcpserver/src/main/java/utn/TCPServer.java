@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.util.Observable;
+import java.util.concurrent.TimeUnit;
 
-public class UDPServer extends Observable{
+public class TCPServer extends Observable{
 
     ServerSocket ss;
     BufferedReader userInput;
@@ -25,27 +26,26 @@ public class UDPServer extends Observable{
             System.out.println("Enviar a todos los clientes: (Enviar X para terminar la conexion):");
             str = userInput.readLine();
             while(str.compareTo("X")!=0){
-                setChanged();
-                notifyObservers(str);
+                sendToAllClients(str);
                 str = userInput.readLine();
             }
-            setChanged();
-            notifyObservers(str);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void closeServer() {
-        try {
+            sendToAllClients(str);
+            TimeUnit.SECONDS.sleep(1);
             ss.close();
-            acceptCon.close();
-            acceptCon.interrupt();
 
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
+
+    private void sendToAllClients(String str) {
+        setChanged();
+        notifyObservers(str);
+    }
+
+
 }
 

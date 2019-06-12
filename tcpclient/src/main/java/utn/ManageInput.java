@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Observable;
 
 
@@ -28,13 +29,14 @@ public class ManageInput extends Observable implements Runnable {
     public void run() {
         try {
             str = serverResponse.readLine();
-        while (str.compareTo("X")!=0){
-            System.out.println("Mensaje del servidor : "+str);
-            str = serverResponse.readLine();
-        }
-        System.out.println("El servidor cerro la conexion");
-        setChanged();
-        notifyObservers();
+            while (str.compareTo("X") != 0) {
+                System.out.println("Mensaje del servidor : " + str);
+                str = serverResponse.readLine();
+            }
+            System.out.println("El servidor cerro la conexion");
+            setChanged();
+            notifyObservers();
+        }catch(SocketException e){
 
         } catch (IOException e) {
             e.printStackTrace();

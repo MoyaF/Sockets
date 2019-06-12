@@ -1,16 +1,18 @@
 package utn;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class ThreadAcceptCon extends Thread{
 
-    UDPServer ms;
+    TCPServer ms;
     ServerSocket ss;
     Socket s;
     ThreadClient tc;
 
-    public ThreadAcceptCon(UDPServer ms, ServerSocket ss)
+    public ThreadAcceptCon(TCPServer ms, ServerSocket ss)
     {
         super();
         this.ms = ms;
@@ -18,7 +20,7 @@ public class ThreadAcceptCon extends Thread{
     }
     @Override
     public void run() {
-        while(true){
+        while(!ss.isClosed()){
             try{
                 s= ss.accept();
                 System.out.println("Conectado con "+s.getLocalAddress().getHostAddress());
@@ -28,15 +30,13 @@ public class ThreadAcceptCon extends Thread{
                 tc.start();
             }
 
-            catch(Exception e){
-                e.printStackTrace();
-                System.out.println("Se hizo mierda la conexion");
+            catch(SocketException e){
+                System.out.println("Server socket cerrado con exito");
 
+            } catch (IOException e) {
+                System.err.println("Error I/O");
             }
         }
     }
 
-    public void close() {
-        tc.interrupt();
-    }
 }

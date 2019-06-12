@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0443abdd-f664-4916-a7ca-452e472acdfa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../tcpclient/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tcpclient/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utn/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpclient/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpclient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/UDPClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/UDPClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpclient/target/classes/utn/UDPClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/target/classes/utn/UDPClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utn/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utn/UDPServer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utn/ServerThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utn/UDPServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utn/UDPServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utn/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utn/ThreadAcceptCon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/ThreadAcceptCon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utn/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/TCPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utn/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utn/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utn/ThreadAcceptCon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utn/ThreadAcceptCon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utn/UDPServer.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,22 +31,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadAcceptCon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+            <state relative-caret-position="389">
+              <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-                <element signature="e#925#926#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+            <state relative-caret-position="255">
+              <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,17 +55,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="120">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/utn/UDPServer.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/utn/TCPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+            <state relative-caret-position="404">
+              <caret line="33" column="14" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,10 +96,11 @@
         <option value="$PROJECT_DIR$/src/main/java/utn/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/utn/ThreadServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/utn/ManageServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utn/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/utn/UDPServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utn/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utn/TCPServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/utn/ThreadAcceptCon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" />
       </list>
     </option>
   </component>
@@ -201,7 +196,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UDPServer" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -220,8 +215,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1024" height="738" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25460124" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18302658" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -260,39 +256,37 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utn/App.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utn/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="57" column="1" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+        <state relative-caret-position="404">
+          <caret line="33" column="14" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utn/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadAcceptCon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+        <state relative-caret-position="389">
+          <caret line="36" column="45" selection-start-line="36" selection-start-column="45" selection-end-line="36" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
-            <element signature="e#925#926#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utn/UDPServer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        <state relative-caret-position="255">
+          <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
