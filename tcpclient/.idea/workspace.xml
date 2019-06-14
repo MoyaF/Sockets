@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af129763-5771-42f2-86c6-962aec502242" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utn/ManageInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/ManageInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utn/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/UDPClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpserver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpserver/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/TCPServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/ThreadAcceptCon.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/ThreadAcceptCon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/ThreadClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/ThreadClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/UDPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/src/main/java/utn/TCPServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpserver/target/classes/utn/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/target/classes/utn/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tcpserver/target/classes/utn/ThreadAcceptCon.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpserver/target/classes/utn/ThreadAcceptCon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tcpserver/target/classes/utn/UDPServer.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="150">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -54,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/ManageInput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
+            <state relative-caret-position="510">
               <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -66,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/ManageOutput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
+            <state relative-caret-position="585">
               <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -124,8 +119,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -169,6 +162,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -230,10 +225,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1024" height="738" extended-state="6" />
+    <frame x="0" y="30" width="1024" height="738" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2597137" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26482618" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -294,19 +289,9 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utn/ManageOutput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utn/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="150">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -316,8 +301,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utn/ManageInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
+        <state relative-caret-position="510">
           <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utn/ManageOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

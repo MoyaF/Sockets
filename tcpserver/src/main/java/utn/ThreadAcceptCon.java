@@ -31,7 +31,7 @@ public class ThreadAcceptCon extends Thread{
             }
 
             catch(SocketException e){
-                System.out.println("Server socket cerrado con exito");
+                System.out.println("El server dejo de escuchar");
 
             } catch (IOException e) {
                 System.err.println("Error I/O");
