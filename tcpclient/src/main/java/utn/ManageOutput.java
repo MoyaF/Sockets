@@ -13,6 +13,7 @@ public class ManageOutput extends Observable implements Runnable {
     BufferedReader userInput;
     BufferedReader serverResponse;
     PrintWriter outputStream;
+    public static boolean closed = false;
 
     public ManageOutput(Socket socket, BufferedReader userInput, BufferedReader serverResponse, PrintWriter outputStream, UDPClient udp) {
         super();
@@ -28,8 +29,8 @@ public class ManageOutput extends Observable implements Runnable {
 
         try{
             str = userInput.readLine();
-            while(str.compareTo("X")!=0){
-                outputStream.println(str );
+            while(!closed && str.compareTo("X")!=0){
+                outputStream.println(str);
                 outputStream.flush();
                 str =userInput.readLine();
             }

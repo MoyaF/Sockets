@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ThreadAcceptCon extends Thread{
 
@@ -11,12 +13,14 @@ public class ThreadAcceptCon extends Thread{
     ServerSocket ss;
     Socket s;
     ThreadClient tc;
+    List<ThreadClient> threadClients;
 
     public ThreadAcceptCon(TCPServer ms, ServerSocket ss)
     {
         super();
         this.ms = ms;
         this.ss = ss;
+        this.threadClients = new ArrayList<>();
     }
     @Override
     public void run() {
@@ -28,15 +32,24 @@ public class ThreadAcceptCon extends Thread{
                 ms.addObserver(tc);
                 tc.setName("Conexion con"+ s.getLocalAddress());
                 tc.start();
+                threadClients.add(tc);
             }
 
             catch(SocketException e){
-                System.out.println("El server dejo de escuchar");
+                System.out.println("Server socket cerrado con exito");
 
             } catch (IOException e) {
                 System.err.println("Error I/O");
             }
         }
+    }
+
+    public void close(){
+        for(ThreadClient t : threadClients)
+        {
+            t.close();
+        }
+
     }
 
 }

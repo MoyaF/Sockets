@@ -29,10 +29,9 @@ public class TCPServer extends Observable{
                 sendToAllClients(str);
                 str = userInput.readLine();
             }
-            sendToAllClients(str);
-            TimeUnit.SECONDS.sleep(1);
-            userInput.close();
             ss.close();
+            acceptCon.close();
+            TimeUnit.SECONDS.sleep(1);
 
 
         } catch (IOException e) {
