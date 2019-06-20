@@ -31,7 +31,9 @@ public class TCPServer extends Observable{
             }
             sendToAllClients(str);
             TimeUnit.SECONDS.sleep(1);
+            userInput.close();
             ss.close();
+
 
         } catch (IOException e) {
             e.printStackTrace();

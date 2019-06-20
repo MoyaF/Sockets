@@ -36,10 +36,11 @@ class ThreadClient extends Thread implements Observer {
         try {
             str = inputStream.readLine();
             while(str.compareTo("X")!=0){
-
+                System.out.println("Cliente " +s.getLocalAddress()+" dice: "+str);
+                str ="Hola " + s.getLocalAddress()+ " soy el server. Me enviaste esto: "+str;
                 outputStream.println(str);
                 outputStream.flush();
-                System.out.println("Respuesta al cliente desde (thread "+this.getId()+") a (" + s.getLocalAddress() +") :  "+str);
+                System.out.println("Respuesta a " + s.getLocalAddress() +":  "+str);
                 str = inputStream.readLine();
 
             }
@@ -78,15 +79,23 @@ class ThreadClient extends Thread implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-        if(o instanceof String) {
-            String msg = (String) o;
-            outputStream.println(msg);
-            outputStream.flush();
-            if(!msg.equals("X"))
-                System.out.println("Mensaje a todos los clientes -> (" + s.getLocalAddress() + ") :  " + msg);
-            else
-                System.out.println("Cerrando conexion");
-        }
+        if (!s.isClosed()) {
+            if (o instanceof String) {
+                String msg = (String) o;
+                outputStream.println(msg);
+                outputStream.flush();
+                if (!msg.equals("X"))
+                    System.out.println("Mensaje a todos los clientes -> (" + s.getLocalAddress() + ") :  " + msg);
+            }
+            else {
+                try {
+                    inputStream.close();
+                    outputStream.close();
+                    s.close();
+                } catch (IOException e) {
 
+                }
+            }
         }
+    }
 }
