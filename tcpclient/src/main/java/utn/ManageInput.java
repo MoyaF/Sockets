@@ -41,6 +41,11 @@ public class ManageInput extends Observable implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        catch (NullPointerException e)
+        {
+            setChanged();
+            notifyObservers();
+        }
 
     }
 }

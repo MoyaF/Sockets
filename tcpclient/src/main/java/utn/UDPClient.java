@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ConnectException;
+import java.net.PortUnreachableException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Observable;
@@ -56,11 +57,12 @@ public class UDPClient  implements Observer {
             }
 
         } catch (UnknownHostException e) {
-            e.printStackTrace();
+            System.err.println("El host: "+host+" no existe, intente con un host valido");
+            this.run();
         }
         catch(ConnectException e){
-            System.err.println("El servidor no esta funcionando");
-            System.out.println("Intente de nuevo");
+            System.err.println("El servidor no esta funcionando o el puerto: "+port+" no es el correcto");
+            System.err.println("Intente de nuevo");
             this.run();
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,10 +75,14 @@ public class UDPClient  implements Observer {
     public void update(Observable observable, Object o) {
         try {
             socket.close();
+            inputThread.interrupt();
+            outputThread.interrupt();
+
             System.out.println("Conexion cerrada");
         }
         catch (IOException e)
         {
+            ManageOutput.closed = true;
             e.printStackTrace();
             System.err.print("Se cago todo justo cuando estabas terminando");
         }

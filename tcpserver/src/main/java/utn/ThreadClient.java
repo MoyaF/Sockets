@@ -36,44 +36,42 @@ class ThreadClient extends Thread implements Observer {
         try {
             str = inputStream.readLine();
             while(str.compareTo("X")!=0){
-                System.out.println("Cliente " +s.getLocalAddress()+" dice: "+str);
-                str ="Hola " + s.getLocalAddress()+ " soy el server. Me enviaste esto: "+str;
+
                 outputStream.println(str);
                 outputStream.flush();
-                System.out.println("Respuesta a " + s.getLocalAddress() +":  "+str);
+                System.out.println("Respuesta al cliente desde (thread "+this.getId()+") a (" + s.getLocalAddress() +") :  "+str);
                 str = inputStream.readLine();
 
             }
-        } catch (IOException e) {
-
-            System.err.println("El cliente "+this.getId()+" se hizo mierda");
         }
         catch(NullPointerException e){
             System.out.println("El cliente "+this.getId()+" cerro la conexion");
         }
+        catch (IOException e) {
+
+        }
 
         finally{
-            try{
-                String str = " ip: " + s.getLocalAddress() + " id: " + this.getId();
-                System.out.println("Cerrando conexion con" + str);
-                if (inputStream !=null){
-                    inputStream.close();
-                }
-
-                if(outputStream !=null){
-                    outputStream.close();
-                }
-                if (s!=null){
-
-                    s.close();
-                    System.out.println("Conexion cerrada con " + str);
-
-                }
+            this.close();
 
             }
-            catch(IOException ie){
-                System.err.println("Error cerrando Socket");
+        }
+
+
+    public void close(){
+        try{
+            String str = " ip: " + s.getLocalAddress() + " id: " + this.getId();
+            System.out.println("Cerrando conexion con" + str);
+            if (s!=null){
+
+                s.close();
+                System.out.println("Conexion cerrada con " + str);
+
             }
+
+        }
+        catch(IOException ie){
+            System.err.println("Error cerrando Socket");
         }
     }
 
@@ -82,20 +80,18 @@ class ThreadClient extends Thread implements Observer {
         if (!s.isClosed()) {
             if (o instanceof String) {
                 String msg = (String) o;
+                msg = "Soy el server, me enviaste esto: " + msg;
                 outputStream.println(msg);
                 outputStream.flush();
-                if (!msg.equals("X"))
+                if (!msg.equals("X")) {
                     System.out.println("Mensaje a todos los clientes -> (" + s.getLocalAddress() + ") :  " + msg);
-            }
-            else {
-                try {
-                    inputStream.close();
-                    outputStream.close();
-                    s.close();
-                } catch (IOException e) {
-
+                }else{
+                    System.out.println("Cerrando conexion");
                 }
             }
+
+        } else {
+
         }
     }
 }
