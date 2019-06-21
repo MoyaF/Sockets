@@ -11,7 +11,7 @@ import java.net.UnknownHostException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class UDPClient  implements Observer {
+public class TCPClient implements Observer {
 
     Socket socket;
     String str;
@@ -25,7 +25,7 @@ public class UDPClient  implements Observer {
     Thread inputThread;
     Thread outputThread;
 
-    public UDPClient() {
+    public TCPClient() {
 
     }
 

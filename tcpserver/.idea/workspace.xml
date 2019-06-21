@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0443abdd-f664-4916-a7ca-452e472acdfa" name="Default Changelist" comment="" />
+    <list default="true" id="0443abdd-f664-4916-a7ca-452e472acdfa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../tcpclient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/ManageOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/UDPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/src/main/java/utn/TCPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/target/classes/utn/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/target/classes/utn/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/target/classes/utn/ManageInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/target/classes/utn/ManageInput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/target/classes/utn/ManageOutput.class" beforeDir="false" afterPath="$PROJECT_DIR$/../tcpclient/target/classes/utn/ManageOutput.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tcpclient/target/classes/utn/UDPClient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utn/ThreadClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-utn.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/utn.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tcp-server-1.0-SNAPSHOT.jar" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="96" column="1" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+            <state relative-caret-position="55">
+              <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/utn/TCPServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
+            <state relative-caret-position="690">
               <caret line="46" column="23" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,9 +121,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="684" />
     <option name="y" value="30" />
-    <option name="width" value="781" />
+    <option name="width" value="340" />
     <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -112,8 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,6 +170,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,9 +233,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="781" height="738" extended-state="4" />
+    <frame x="684" y="30" width="340" height="738" extended-state="5" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2734694" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.51237625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -223,7 +245,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32840723" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6436782" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39901477" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -290,7 +312,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utn/TCPServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
+        <state relative-caret-position="690">
           <caret line="46" column="23" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -300,8 +322,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/utn/ThreadClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="96" column="1" selection-start-line="96" selection-start-column="1" selection-end-line="96" selection-end-column="1" />
+        <state relative-caret-position="55">
+          <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
