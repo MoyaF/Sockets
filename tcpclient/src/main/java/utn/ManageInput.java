@@ -16,7 +16,7 @@ public class ManageInput extends Observable implements Runnable {
     BufferedReader serverResponse;
     PrintWriter outputStream;
 
-    public ManageInput(Socket socket, BufferedReader userInput, BufferedReader serverResponse, PrintWriter outputStream, UDPClient udp) {
+    public ManageInput(Socket socket, BufferedReader userInput, BufferedReader serverResponse, PrintWriter outputStream, TCPClient udp) {
         super();
         this.socket = socket;
         this.userInput = userInput;
@@ -36,17 +36,16 @@ public class ManageInput extends Observable implements Runnable {
             System.out.println("El servidor cerro la conexion");
             setChanged();
             notifyObservers();
-        }catch(SocketException e){
+        } catch (SocketException e) {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (NullPointerException e)
-        {
+        } catch (NullPointerException e) {
             setChanged();
             notifyObservers();
         }
 
     }
 }
+
 
