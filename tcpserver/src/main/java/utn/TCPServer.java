@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.util.Observable;
 import java.util.concurrent.TimeUnit;
 
-public class TCPServer extends Observable{
+public class TCPServer extends Observable {
 
     ServerSocket ss;
     BufferedReader userInput;
@@ -16,16 +16,16 @@ public class TCPServer extends Observable{
 
 
     public void startServer() {
-        try{
+        try {
             userInput = new BufferedReader(new InputStreamReader(System.in));
             ss = new ServerSocket(3000);
             System.out.println("Servidor escuchando");
-            acceptCon = new ThreadAcceptCon(this,ss);
+            acceptCon = new ThreadAcceptCon(this, ss);
             acceptCon.start();
 
             System.out.println("Enviar a todos los clientes: (Enviar X para terminar la conexion):");
             str = userInput.readLine();
-            while(str.compareTo("X")!=0){
+            while (str.compareTo("X") != 0) {
                 sendToAllClients(str);
                 str = userInput.readLine();
             }
