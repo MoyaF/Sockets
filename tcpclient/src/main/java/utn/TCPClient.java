@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ConnectException;
-import java.net.PortUnreachableException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Observable;
@@ -29,14 +28,14 @@ public class TCPClient implements Observer {
 
     }
 
-    public void run(){
+    public void run() {
         try {
 
             userInput = new BufferedReader(new InputStreamReader(System.in));
 
             System.out.println("Ingrese la direccion del host o X para salir");
             host = userInput.readLine();
-            if(!host.equals("X")){
+            if (!host.equals("X")) {
                 System.out.println("Ingrese el puerto");
                 port = userInput.readLine();
                 socket = new Socket(host, Integer.valueOf(port));
@@ -57,11 +56,13 @@ public class TCPClient implements Observer {
             }
 
         } catch (UnknownHostException e) {
-            System.err.println("El host: "+host+" no existe, intente con un host valido");
+            System.err.println("El host: " + host + " no existe, intente con un host valido");
             this.run();
-        }
-        catch(ConnectException e){
-            System.err.println("El servidor no esta funcionando o el puerto: "+port+" no es el correcto");
+        } catch (NumberFormatException e) {
+            System.err.println("Por favor, ingrese un numero en el puerto");
+            this.run();
+        } catch (ConnectException e) {
+            System.err.println("El servidor no esta funcionando o el puerto: " + port + " no es el correcto");
             System.err.println("Intente de nuevo");
             this.run();
         } catch (IOException e) {
@@ -79,12 +80,8 @@ public class TCPClient implements Observer {
             outputThread.interrupt();
 
             System.out.println("Conexion cerrada");
-        }
-        catch (IOException e)
-        {
-            ManageOutput.closed = true;
+        } catch (IOException e) {
             e.printStackTrace();
-            System.err.print("Se cago todo justo cuando estabas terminando");
         }
     }
 }
