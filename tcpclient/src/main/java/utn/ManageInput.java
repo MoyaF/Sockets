@@ -33,7 +33,6 @@ public class ManageInput extends Observable implements Runnable {
                 System.out.println("Mensaje del servidor : " + str);
                 str = serverResponse.readLine();
             }
-            System.out.println("El servidor cerro la conexion");
             setChanged();
             notifyObservers();
         } catch (SocketException e) {
@@ -41,11 +40,12 @@ public class ManageInput extends Observable implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (NullPointerException e) {
-            setChanged();
-            notifyObservers();
+            System.out.println("El servidor cerro la conexion");
+            System.exit(0);
         }
 
     }
 }
+
 
 
