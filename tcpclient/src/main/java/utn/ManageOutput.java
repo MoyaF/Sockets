@@ -13,9 +13,8 @@ public class ManageOutput extends Observable implements Runnable {
     BufferedReader userInput;
     BufferedReader serverResponse;
     PrintWriter outputStream;
-    public static boolean closed = false;
 
-    public ManageOutput(Socket socket, BufferedReader userInput, BufferedReader serverResponse, PrintWriter outputStream, UDPClient udp) {
+    public ManageOutput(Socket socket, BufferedReader userInput, BufferedReader serverResponse, PrintWriter outputStream, TCPClient udp) {
         super();
         this.socket = socket;
         this.userInput = userInput;
@@ -23,21 +22,21 @@ public class ManageOutput extends Observable implements Runnable {
         this.outputStream = outputStream;
         this.addObserver(udp);
     }
+
     @Override
     public void run() {
         System.out.println("Enviar al servidor: (Enviar X para terminar la conexion):");
 
-        try{
+        try {
             str = userInput.readLine();
-            while(!closed && str.compareTo("X")!=0){
+            while (str.compareTo("X") != 0) {
                 outputStream.println(str);
                 outputStream.flush();
-                str =userInput.readLine();
+                str = userInput.readLine();
             }
             setChanged();
             notifyObservers();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error al leer el socket");
         }
